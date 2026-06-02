@@ -8,12 +8,7 @@ const ADDR_SUGGESTIONS = [
   '1248 Oakhill Road, Nashville, TN 37215',
 ];
 
-// ╔════════════════════════════════════════════════════════════╗
-// PASTE YOUR WEB3FORMS ACCESS KEY BELOW (between the quotes).
-// Get it free at https://web3forms.com — enter robbie@miramaygroup.com,
-// then check that inbox for the key. Leads will be emailed to you.
 const WEB3FORMS_ACCESS_KEY = 'ae72e4b6-6990-405c-8bcc-039e1ac301e9';
-// ╚════════════════════════════════════════════════════════════╝
 
 function LpForm() {
   const [addr, setAddr] = useStateLp('');
@@ -66,7 +61,7 @@ function LpForm() {
       <section id="cash-offer-form" className="lp-section" style={{ background: '#fff' }}>
         <div className="lp-container" style={{ maxWidth: 640, textAlign: 'center' }}>
           <div style={{ width: 80, height: 80, borderRadius: 999, background: 'rgba(74,124,111,0.12)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: 24 }}>
-            <i data-lucide="check" style={{ width: 36, height: 36, color: '#4A7C6F' }}></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#4A7C6F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </div>
           <h2 className="lp-h2">You're all set.</h2>
           <p className="lp-lede" style={{ margin: '0 auto 24px', textAlign: 'center' }}>
@@ -113,7 +108,7 @@ function LpForm() {
                 {suggestions.map(s => (
                   <div key={s} style={sugStyles.item}
                     onMouseDown={() => { setAddr(s); setShowSug(false); }}>
-                    <i data-lucide="map-pin" style={{ width: 14, height: 14, color: '#78838F', flexShrink: 0 }}></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#78838F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                     <span>{s}</span>
                   </div>
                 ))}
@@ -151,13 +146,13 @@ function LpForm() {
                 <option>Vacant or Rental Property</option>
                 <option>Other</option>
               </select>
-              <i data-lucide="chevron-down" style={{ position: 'absolute', right: 14, top: 15, width: 18, height: 18, color: '#78838F', pointerEvents: 'none' }}></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#78838F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ position: 'absolute', right: 14, top: 15, pointerEvents: 'none' }}><polyline points="6 9 12 15 18 9"></polyline></svg>
             </div>
           </div>
 
           <button type="submit" disabled={submitting} className="lp-btn lp-btn-gold" style={{ width: '100%', justifyContent: 'center', padding: '18px', fontSize: 17, opacity: submitting ? 0.7 : 1, cursor: submitting ? 'wait' : 'pointer' }}>
             {submitting ? 'Sending…' : 'Send Me My Cash Offer'}
-            {!submitting && <i data-lucide="arrow-right" style={{ width: 18, height: 18 }}></i>}
+            {!submitting && <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>}
           </button>
 
           {error && (
@@ -204,7 +199,7 @@ function LpFaq() {
               <button onClick={() => setOpen(open === i ? -1 : i)}
                 style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 24px', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', fontFamily: 'DM Sans, sans-serif' }}>
                 <span style={{ fontFamily: 'DM Serif Display', fontSize: 20, color: '#1C2B3A', letterSpacing: '-0.01em' }}>{f.q}</span>
-                <i data-lucide={open === i ? 'minus' : 'plus'} style={{ width: 20, height: 20, color: '#C4874A', flexShrink: 0 }}></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4874A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>{open === i ? <line x1="5" y1="12" x2="19" y2="12"></line> : <><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></>}</svg>
               </button>
               {open === i && (
                 <div style={{ padding: '0 24px 24px', fontSize: 15, lineHeight: 1.65, color: '#4A5968' }}>{f.a}</div>
@@ -223,7 +218,7 @@ function LpFooter() {
       <div className="lp-container">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 40, flexWrap: 'wrap', marginBottom: 40, paddingBottom: 40, borderBottom: '1px solid rgba(250,249,247,0.1)' }}>
           <div>
-                        <img src="assets/logo-miramay-light.png" alt="miramay" style={{ height: 34, display: 'block', marginBottom: 18 }} />
+            <img src="assets/logo-miramay-light.png" alt="miramay" style={{ height: 34, display: 'block', marginBottom: 18 }} />
             <p style={{ fontSize: 14, color: 'rgba(250,249,247,0.7)', margin: '0 0 8px' }}>We Buy Homes for Cash</p>
             <a href="#" style={{ fontSize: 13, color: '#C4874A', textDecoration: 'none' }}>miramayhomebuyers.com</a>
           </div>
