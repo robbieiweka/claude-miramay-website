@@ -17,9 +17,26 @@
 <script type="text/babel" src="LpMid.jsx"></script>
 <script type="text/babel" src="LpBottom.jsx"></script>
 <script type="text/babel">
-  const { useEffect } = React;
+  const { useEffect, useState } = React;
 
   function App() {
+    const [page, setPage] = useState(window.location.pathname);
+
+    useEffect(() => {
+      const onPop = () => setPage(window.location.pathname);
+      window.addEventListener('popstate', onPop);
+      return () => window.removeEventListener('popstate', onPop);
+    }, []);
+
+    const navigate = (path) => {
+      window.history.pushState({}, '', path);
+      setPage(path);
+      window.scrollTo(0, 0);
+    };
+
+    if (page === '/privacy-policy') return <PrivacyPolicy navigate={navigate} />;
+    if (page === '/terms-of-service') return <TermsOfService navigate={navigate} />;
+
     const scrollToForm = () => {
       const el = document.getElementById('cash-offer-form');
       if (!el) return;
@@ -44,7 +61,7 @@
         <LpAbout />
         <LpForm />
         <LpFaq />
-        <LpFooter />
+        <LpFooter navigate={navigate} />
       </div>
     );
   }
@@ -53,4 +70,3 @@
 </script>
 </body>
 </html>
-
