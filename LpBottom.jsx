@@ -212,7 +212,7 @@ function LpFaq() {
   );
 }
 
-function LpFooter() {
+function LpFooter({ navigate }) {
   return (
     <footer style={{ background: '#1C2B3A', color: '#FAF9F7', padding: '64px 0 32px' }}>
       <div className="lp-container">
@@ -223,8 +223,8 @@ function LpFooter() {
             <a href="/" style={{ fontSize: 13, color: '#C4874A', textDecoration: 'none' }}>miramayhomebuyers.com</a>
           </div>
           <div style={{ display: 'flex', gap: 32 }}>
-            <a href="/privacy-policy" style={{ color: 'rgba(250,249,247,0.8)', textDecoration: 'none', fontSize: 14 }}>Privacy Policy</a>
-            <a href="/terms-of-service" style={{ color: 'rgba(250,249,247,0.8)', textDecoration: 'none', fontSize: 14 }}>Terms of Service</a>
+            <a href="/privacy-policy" onClick={(e) => { e.preventDefault(); navigate('/privacy-policy'); }} style={{ color: 'rgba(250,249,247,0.8)', textDecoration: 'none', fontSize: 14 }}>Privacy Policy</a>
+            <a href="/terms-of-service" onClick={(e) => { e.preventDefault(); navigate('/terms-of-service'); }} style={{ color: 'rgba(250,249,247,0.8)', textDecoration: 'none', fontSize: 14 }}>Terms of Service</a>
           </div>
         </div>
         <div style={{ fontSize: 12, color: 'rgba(250,249,247,0.5)' }}>© 2025 Miramay Home Buyers. All rights reserved.</div>
@@ -233,4 +233,157 @@ function LpFooter() {
   );
 }
 
-Object.assign(window, { LpForm, LpFaq, LpFooter });
+const legalStyles = `
+  .legal-page { font-family: 'DM Sans', sans-serif; background: #FAF9F7; color: #1C2B3A; min-height: 100vh; }
+  .legal-nav { background: #1C2B3A; padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; }
+  .legal-nav img { height: 30px; }
+  .legal-nav a { color: rgba(250,249,247,0.8); font-size: 14px; text-decoration: none; cursor: pointer; }
+  .legal-nav a:hover { color: #FAF9F7; }
+  .legal-container { max-width: 780px; margin: 0 auto; padding: 64px 24px 96px; }
+  .legal-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: #C4874A; text-transform: uppercase; margin-bottom: 12px; }
+  .legal-h1 { font-family: 'DM Serif Display', serif; font-size: clamp(32px, 5vw, 48px); color: #1C2B3A; line-height: 1.15; margin-bottom: 12px; }
+  .legal-meta { font-size: 14px; color: #78838F; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(28,43,58,0.1); }
+  .legal-h2 { font-family: 'DM Serif Display', serif; font-size: 22px; color: #1C2B3A; margin: 40px 0 12px; }
+  .legal-p { font-size: 15px; line-height: 1.75; color: #4A5968; margin-bottom: 16px; }
+  .legal-ul { padding-left: 20px; margin-bottom: 16px; }
+  .legal-ul li { font-size: 15px; line-height: 1.75; color: #4A5968; margin-bottom: 6px; }
+  .legal-footer { background: #1C2B3A; color: rgba(250,249,247,0.5); text-align: center; font-size: 12px; padding: 24px; }
+`;
+
+function PrivacyPolicy({ navigate }) {
+  return (
+    <div className="legal-page">
+      <style>{legalStyles}</style>
+      <nav className="legal-nav">
+        <img src="assets/logo-miramay-light.png" alt="Miramay Home Buyers" />
+        <a onClick={() => navigate('/')}>← Back to Home</a>
+      </nav>
+      <div className="legal-container">
+        <div className="legal-eyebrow">Legal</div>
+        <h1 className="legal-h1">Privacy Policy</h1>
+        <p className="legal-meta">Last updated: June 1, 2025</p>
+
+        <p className="legal-p">Miramay Home Buyers, operated by Miramay Group LLC ("Miramay," "we," "us," or "our"), is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard information you provide when visiting miramayhomebuyers.com or communicating with us.</p>
+
+        <h2 className="legal-h2">1. Information We Collect</h2>
+        <p className="legal-p">We may collect the following types of information:</p>
+        <ul className="legal-ul">
+          <li><strong>Contact Information:</strong> Name, phone number, and email address submitted through our forms or chat widget.</li>
+          <li><strong>Property Information:</strong> Property address and details about your situation that you voluntarily provide.</li>
+          <li><strong>Usage Data:</strong> Pages visited, time spent on site, browser type, and IP address, collected automatically via cookies and analytics tools.</li>
+          <li><strong>Communications:</strong> Records of phone calls, SMS messages, and emails exchanged with our team.</li>
+        </ul>
+
+        <h2 className="legal-h2">2. How We Use Your Information</h2>
+        <p className="legal-p">We use the information we collect to:</p>
+        <ul className="legal-ul">
+          <li>Prepare and deliver a cash offer for your property</li>
+          <li>Contact you via phone, email, or SMS regarding your inquiry</li>
+          <li>Improve our website and marketing efforts</li>
+          <li>Comply with legal obligations</li>
+        </ul>
+
+        <h2 className="legal-h2">3. SMS / Text Message Communications</h2>
+        <p className="legal-p">By submitting your phone number through our website or chat widget, you consent to receive SMS text messages from Miramay Home Buyers regarding your property inquiry. Message frequency varies. Standard message and data rates may apply. You may opt out at any time by replying <strong>STOP</strong> to any message. For help, reply <strong>HELP</strong>.</p>
+        <p className="legal-p">We do not sell or share your phone number with third parties for their own marketing purposes.</p>
+
+        <h2 className="legal-h2">4. Sharing Your Information</h2>
+        <p className="legal-p">We do not sell, rent, or trade your personal information. We may share information with:</p>
+        <ul className="legal-ul">
+          <li><strong>Service Providers:</strong> Third-party tools we use to operate our business (e.g., CRM platforms, form submission services, analytics), bound by confidentiality agreements.</li>
+          <li><strong>Legal Requirements:</strong> If required by law, court order, or government authority.</li>
+        </ul>
+
+        <h2 className="legal-h2">5. Cookies & Tracking</h2>
+        <p className="legal-p">We use cookies and similar tracking technologies to understand how visitors use our site and to improve your experience. You can control cookie settings through your browser. Disabling cookies may affect certain site functionality.</p>
+
+        <h2 className="legal-h2">6. Data Security</h2>
+        <p className="legal-p">We implement reasonable security measures to protect your information from unauthorized access, disclosure, or destruction. However, no method of transmission over the internet is 100% secure.</p>
+
+        <h2 className="legal-h2">7. Your Rights</h2>
+        <p className="legal-p">Depending on your state of residence, you may have the right to access, correct, or request deletion of your personal information. To exercise these rights, contact us at the information below.</p>
+
+        <h2 className="legal-h2">8. Third-Party Links</h2>
+        <p className="legal-p">Our website may contain links to third-party sites. We are not responsible for the privacy practices of those sites and encourage you to review their policies.</p>
+
+        <h2 className="legal-h2">9. Changes to This Policy</h2>
+        <p className="legal-p">We may update this Privacy Policy from time to time. Changes will be posted on this page with a revised "Last updated" date.</p>
+
+        <h2 className="legal-h2">10. Contact Us</h2>
+        <p className="legal-p">If you have questions about this Privacy Policy, please contact us:</p>
+        <ul className="legal-ul">
+          <li><strong>Company:</strong> Miramay Group LLC</li>
+          <li><strong>Website:</strong> miramayhomebuyers.com</li>
+          <li><strong>Email:</strong> info@miramayhomebuyers.com</li>
+        </ul>
+      </div>
+      <div className="legal-footer">© 2025 Miramay Home Buyers. All rights reserved.</div>
+    </div>
+  );
+}
+
+function TermsOfService({ navigate }) {
+  return (
+    <div className="legal-page">
+      <style>{legalStyles}</style>
+      <nav className="legal-nav">
+        <img src="assets/logo-miramay-light.png" alt="Miramay Home Buyers" />
+        <a onClick={() => navigate('/')}>← Back to Home</a>
+      </nav>
+      <div className="legal-container">
+        <div className="legal-eyebrow">Legal</div>
+        <h1 className="legal-h1">Terms of Service</h1>
+        <p className="legal-meta">Last updated: June 1, 2025</p>
+
+        <p className="legal-p">These Terms of Service ("Terms") govern your use of the website miramayhomebuyers.com, operated by Miramay Group LLC ("Miramay," "we," "us," or "our"). By accessing or using our website, you agree to be bound by these Terms.</p>
+
+        <h2 className="legal-h2">1. Use of the Website</h2>
+        <p className="legal-p">You may use this website for lawful purposes only. You agree not to:</p>
+        <ul className="legal-ul">
+          <li>Submit false or misleading information</li>
+          <li>Interfere with the operation of the site</li>
+          <li>Use the site for any unlawful or unauthorized purpose</li>
+          <li>Attempt to gain unauthorized access to any part of the site or its related systems</li>
+        </ul>
+
+        <h2 className="legal-h2">2. No Obligation</h2>
+        <p className="legal-p">Submitting your information through our website does not obligate you to sell your property, nor does it obligate Miramay Home Buyers to purchase it. Any cash offer we provide is subject to property inspection, due diligence, and mutual agreement by both parties.</p>
+
+        <h2 className="legal-h2">3. Informational Purposes Only</h2>
+        <p className="legal-p">The content on this website is provided for general informational purposes only. Nothing on this site constitutes legal, financial, or real estate advice. We encourage you to consult qualified professionals before making any real estate decisions.</p>
+
+        <h2 className="legal-h2">4. SMS Communications</h2>
+        <p className="legal-p">By providing your phone number and submitting our contact form or chat widget, you consent to receive SMS text messages from Miramay Home Buyers. These messages may include information about your property inquiry, follow-up communications, and related updates. You may opt out at any time by replying <strong>STOP</strong>. Message and data rates may apply.</p>
+
+        <h2 className="legal-h2">5. Intellectual Property</h2>
+        <p className="legal-p">All content on this website — including text, graphics, logos, and images — is the property of Miramay Group LLC and is protected by applicable intellectual property laws. You may not reproduce, distribute, or use any content without our prior written permission.</p>
+
+        <h2 className="legal-h2">6. Third-Party Services</h2>
+        <p className="legal-p">Our website may use third-party services for form submissions, analytics, and communications (such as GoHighLevel, Web3Forms, and Meta). Your use of these services is also governed by their respective terms and privacy policies.</p>
+
+        <h2 className="legal-h2">7. Disclaimer of Warranties</h2>
+        <p className="legal-p">This website is provided "as is" without warranties of any kind, either express or implied. We do not warrant that the site will be error-free, uninterrupted, or free of viruses or other harmful components.</p>
+
+        <h2 className="legal-h2">8. Limitation of Liability</h2>
+        <p className="legal-p">To the fullest extent permitted by law, Miramay Group LLC shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of this website or reliance on any content contained herein.</p>
+
+        <h2 className="legal-h2">9. Governing Law</h2>
+        <p className="legal-p">These Terms shall be governed by and construed in accordance with the laws of the State of Connecticut, without regard to its conflict of law provisions.</p>
+
+        <h2 className="legal-h2">10. Changes to These Terms</h2>
+        <p className="legal-p">We reserve the right to update these Terms at any time. Changes will be posted on this page with a revised "Last updated" date. Continued use of the website after changes constitutes acceptance of the updated Terms.</p>
+
+        <h2 className="legal-h2">11. Contact Us</h2>
+        <p className="legal-p">If you have questions about these Terms, please contact us:</p>
+        <ul className="legal-ul">
+          <li><strong>Company:</strong> Miramay Group LLC</li>
+          <li><strong>Website:</strong> miramayhomebuyers.com</li>
+          <li><strong>Email:</strong> info@miramayhomebuyers.com</li>
+        </ul>
+      </div>
+      <div className="legal-footer">© 2025 Miramay Home Buyers. All rights reserved.</div>
+    </div>
+  );
+}
+
+Object.assign(window, { LpForm, LpFaq, LpFooter, PrivacyPolicy, TermsOfService });
