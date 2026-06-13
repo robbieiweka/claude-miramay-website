@@ -223,8 +223,8 @@ function LpFooter({ navigate }) {
             <a href="/" style={{ fontSize: 13, color: '#C4874A', textDecoration: 'none' }}>miramayhomebuyers.com</a>
           </div>
           <div style={{ display: 'flex', gap: 32 }}>
-            <a href="/privacy-policy" onClick={(e) => { e.preventDefault(); navigate('/privacy-policy'); }} style={{ color: 'rgba(250,249,247,0.8)', textDecoration: 'none', fontSize: 14 }}>Privacy Policy</a>
-            <a href="/terms-of-service" onClick={(e) => { e.preventDefault(); navigate('/terms-of-service'); }} style={{ color: 'rgba(250,249,247,0.8)', textDecoration: 'none', fontSize: 14 }}>Terms of Service</a>
+            <a href="/privacy-policy" style={{ color: 'rgba(250,249,247,0.8)', textDecoration: 'none', fontSize: 14 }}>Privacy Policy</a>
+<a href="/terms-of-service" style={{ color: 'rgba(250,249,247,0.8)', textDecoration: 'none', fontSize: 14 }}>Terms of Service</a>
           </div>
         </div>
         <div style={{ fontSize: 12, color: 'rgba(250,249,247,0.5)' }}>© 2025 Miramay Home Buyers. All rights reserved.</div>
