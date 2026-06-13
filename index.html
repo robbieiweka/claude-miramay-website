@@ -28,14 +28,18 @@
       return () => window.removeEventListener('popstate', onPop);
     }, []);
 
+    useEffect(() => {
+      const interval = setInterval(() => {
+        if (window.lucide) window.lucide.createIcons();
+      }, 100);
+      return () => clearInterval(interval);
+    }, []);
+
     const navigate = (path) => {
       window.history.pushState({}, '', path);
       setPage(path);
       window.scrollTo(0, 0);
     };
-
-    if (page === '/privacy-policy') return <PrivacyPolicy navigate={navigate} />;
-    if (page === '/terms-of-service') return <TermsOfService navigate={navigate} />;
 
     const scrollToForm = () => {
       const el = document.getElementById('cash-offer-form');
@@ -44,12 +48,8 @@
       window.scrollTo({ top: y, behavior: 'smooth' });
     };
 
-    useEffect(() => {
-      const interval = setInterval(() => {
-        if (window.lucide) window.lucide.createIcons();
-      }, 100);
-      return () => clearInterval(interval);
-    }, []);
+    if (page === '/privacy-policy') return <PrivacyPolicy navigate={navigate} />;
+    if (page === '/terms-of-service') return <TermsOfService navigate={navigate} />;
 
     return (
       <div>
