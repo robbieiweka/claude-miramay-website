@@ -1,18 +1,7 @@
 {
-  "headers": [
-    {
-      "source": "/privacy-policy.html",
-      "headers": [{ "key": "Content-Type", "value": "text/html; charset=utf-8" }]
-    },
-    {
-      "source": "/terms-of-service.html",
-      "headers": [{ "key": "Content-Type", "value": "text/html; charset=utf-8" }]
-    }
-  ],
   "rewrites": [
-    { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
-    { "source": "/terms-of-service", "destination": "/terms-of-service.html" },
+    { "source": "/privacy-policy", "destination": "/privacy-policy" },
+    { "source": "/terms-of-service", "destination": "/terms-of-service" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
-
